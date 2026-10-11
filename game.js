@@ -55,13 +55,53 @@ function arena(){ctx.fillStyle='#243e4b';ctx.fillRect(0,0,W,H);const tile=60;for
 for(const x of [W*.16,W*.84]){rr(x-54,12,108,35,4,'#223e4a','#456774');line(x-44,24,x-20,24,'#53d4c6',3);line(x-20,24,x-10,36,'#53d4c6',3);line(x-10,36,x+2,18,'#53d4c6',3);line(x+2,18,x+13,31,'#53d4c6',3);line(x+13,31,x+43,31,'#53d4c6',3);}text(mode==='training'?'마지막 실습 · 함께하면 합격':'국시 실기 제 30 시험장',W*.5,33,W<700?16:19,'#96b5bf');
 ctx.save();ctx.globalAlpha=.085;text('30',W/2,H/2,180,'#b6d3d3');ctx.restore();ctx.setLineDash([7,8]);ctx.strokeStyle='#456470';ctx.lineWidth=2;ctx.strokeRect(W*.12,H*.19,W*.76,H*.68);ctx.setLineDash([]);
 for(let i=0;i<4;i++){const x=i<2?45:W-70,y=i%2===0?H*.26:H*.69;rr(x,y,25,72,4,'#314e5a','#506b74');rr(x+4,y+7,17,19,3,'#68848a');rr(x+4,y+31,17,28,2,'#4b6973');}text('실제 이력과 무관한 가상 시험장',W/2,H-11,9,'#79939f', 'center',400);}
+// Shared photo-inspired identity for both Shinyu forms; gameplay geometry is unchanged.
+function drawShinyu(dog,walk){
+  const ink='#0b1420',skin='#efbc9e';
+  ctx.lineJoin='round';ctx.lineCap='round';
+  if(dog){ctx.save();ctx.translate(20,9);ctx.rotate(Math.sin(clock*15)*.5);ctx.beginPath();ctx.arc(4,-2,9,-2,1.7);ctx.strokeStyle='#453c37';ctx.lineWidth=8;ctx.stroke();ctx.restore();}
+  // Dark denim and the light hoodie showing beneath an open, quilted black puffer.
+  rr(-15,11+walk,11,16,4,'#263c52',ink);rr(4,11-walk,11,16,4,'#263c52',ink);
+  line(-12,17+walk,-12,23+walk,'#40536a',1.5);line(7,17-walk,7,23-walk,'#40536a',1.5);
+  rr(-20,-13,40,34,9,'#181e29',ink);rr(-12,-15,24,38,5,'#c7ced2',ink);
+  rr(-9,11,18,8,3,'#b7c0c7');line(-7,14,7,14,'#9eabb4',1);
+  rr(-26,-9,11,27,6,'#1c222c',ink);rr(15,-9,11,27,6,'#1c222c',ink);
+  rr(-21,-12,10,34,4,'#202530',ink);rr(11,-12,10,34,4,'#202530',ink);
+  for(const row of [-1,8,16]){line(-24,row,-18,row+1,'#3c414b',1.3);line(18,row+1,24,row,'#3c414b',1.3);line(-19,row,-13,row,'#3b414c',1.3);line(13,row,19,row,'#3b414c',1.3);}
+  line(-11,-8,-11,19,'#76818b',1.1);line(11,-8,11,19,'#76818b',1.1);
+  rr(-26,13,10,5,2,'#111722');rr(16,13,10,5,2,'#111722');
+  circle(-21,18,4.5,skin,ink);circle(21,18,4.5,skin,ink);
+  // Broad gray hood and white cords make the outfit readable even on mobile.
+  ctx.beginPath();ctx.moveTo(-18,-16);ctx.quadraticCurveTo(-13,-23,0,-19);ctx.quadraticCurveTo(13,-23,18,-16);ctx.lineTo(10,-5);ctx.quadraticCurveTo(0,1,-10,-5);ctx.closePath();ctx.fillStyle='#dfe3e4';ctx.fill();ctx.strokeStyle='#8796a1';ctx.lineWidth=1.4;ctx.stroke();
+  line(-8,-6,-6,7,'#f8f6f0',1.8);line(7,-6,5,6,'#f8f6f0',1.8);
+  // A clean-shaven, gently tapered face with visible ears; no glasses.
+  circle(-20,-23,4.5,skin,ink,1.6);circle(20,-23,4.5,skin,ink,1.6);
+  ctx.beginPath();ctx.moveTo(-19,-28);ctx.bezierCurveTo(-21,-14,-12,-4,0,-3);ctx.bezierCurveTo(12,-4,21,-14,19,-28);ctx.bezierCurveTo(17,-46,-17,-46,-19,-28);ctx.closePath();ctx.fillStyle=skin;ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=2;ctx.stroke();
+  ctx.beginPath();ctx.ellipse(-12,-16,4,2,0,0,TAU);ctx.ellipse(12,-16,4,2,0,0,TAU);ctx.fillStyle=dog?'#e9a28f':'#e6a68f';ctx.fill();
+  // Rounded, straight black fringe with a soft center split, not the old spiky silhouette.
+  ctx.beginPath();ctx.moveTo(-21,-20);ctx.bezierCurveTo(-26,-33,-20,-48,-5,-48);ctx.bezierCurveTo(6,-53,24,-43,22,-29);ctx.lineTo(19,-20);ctx.lineTo(16,-33);ctx.quadraticCurveTo(13,-29,10,-27);ctx.lineTo(11,-36);ctx.quadraticCurveTo(7,-30,3,-27);ctx.lineTo(3,-37);ctx.quadraticCurveTo(-1,-31,-6,-27);ctx.lineTo(-5,-35);ctx.quadraticCurveTo(-10,-30,-14,-27);ctx.lineTo(-17,-32);ctx.lineTo(-18,-21);ctx.closePath();ctx.fillStyle='#171a22';ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=1.6;ctx.stroke();
+  ctx.beginPath();ctx.moveTo(-17,-36);ctx.quadraticCurveTo(-12,-45,-5,-44);ctx.moveTo(2,-46);ctx.quadraticCurveTo(12,-44,16,-37);ctx.strokeStyle='#343039';ctx.lineWidth=2;ctx.stroke();
+  ctx.beginPath();ctx.moveTo(0,-21);ctx.lineTo(-1,-16);ctx.lineTo(2,-15);ctx.strokeStyle='#bd816e';ctx.lineWidth=1.2;ctx.stroke();
+  if(dog){
+    // Same person, softened expression, with floppy ears and a wagging tail added.
+    for(const side of [-1,1]){ctx.save();ctx.translate(side*21,-36);ctx.rotate(side*-.2);ctx.beginPath();ctx.ellipse(0,5,6.5,13,0,0,TAU);ctx.fillStyle='#403632';ctx.fill();ctx.strokeStyle=ink;ctx.lineWidth=1.5;ctx.stroke();ctx.beginPath();ctx.ellipse(0,7,3,8,0,0,TAU);ctx.fillStyle='#a87765';ctx.fill();ctx.restore();}
+    ctx.beginPath();ctx.moveTo(-13,-21);ctx.quadraticCurveTo(-8,-26,-4,-21);ctx.moveTo(4,-21);ctx.quadraticCurveTo(8,-26,13,-21);ctx.strokeStyle='#25232a';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.moveTo(-5,-11);ctx.quadraticCurveTo(0,-6,6,-11);ctx.strokeStyle='#94564f';ctx.lineWidth=1.8;ctx.stroke();
+  }else{
+    line(-13,-28,-4,-25,'#25232a',2.3);line(4,-25,13,-28,'#25232a',2.3);
+    line(-12,-22,-5,-22,'#35292b',1.4);line(5,-22,12,-22,'#35292b',1.4);circle(-8,-21,1.8,'#1c1e26');circle(8,-21,1.8,'#1c1e26');
+    ctx.beginPath();ctx.moveTo(-6,-9);ctx.quadraticCurveTo(0,-15,7,-10);ctx.strokeStyle='#874b4e';ctx.lineWidth=2;ctx.stroke();
+    // A compact comic anger mark communicates the villain role without altering his features.
+    line(25,-38,25,-32,'#ff7183',1.8);line(22,-35,28,-35,'#ff7183',1.8);
+  }
+}
 function actor(x,y,type){const isBoss=type==='boss',dog=type==='dog',scale=isBoss?1.55:dog?1.05:1;const walk=Math.sin(clock*12)*((type==='hero'&&(keys.size||Math.hypot(stick.x,stick.y)>.1))||dog?2:1);ctx.save();ctx.translate(x,y);ctx.scale(scale,scale);ctx.fillStyle='#071d2688';ctx.beginPath();ctx.ellipse(0,19,24,9,0,0,TAU);ctx.fill();if(type==='hero'&&player.inv>0&&Math.floor(clock*24)%2){ctx.globalAlpha=.45;}if(isBoss&&boss.stun>0){for(let i=0;i<3;i++){const a=clock*3+i*TAU/3;text('✦',Math.cos(a)*25,-52+Math.sin(a)*5,12,'#e6fc69');}}
-if(dog){ctx.save();ctx.translate(20,9);ctx.rotate(Math.sin(clock*15)*.5);ctx.beginPath();ctx.arc(4,-2,9,-2,1.7);ctx.strokeStyle='#cfae78';ctx.lineWidth=8;ctx.stroke();ctx.restore();}
-rr(-15,11+walk,11,16,4,'#172133','#0a1521');rr(4,11-walk,11,16,4,'#172133','#0a1521');rr(-20,-13,40,34,9,isBoss||dog?'#ecf2e9':'#3bb7ac','#091d2b');
-if(isBoss||dog){ctx.fillStyle='#70548d';ctx.fillRect(-5,-9,10,27);line(-10,-10,-5,4,'#a5b9be');line(10,-10,5,4,'#a5b9be');ctx.beginPath();ctx.arc(4,1,9,0,Math.PI);ctx.strokeStyle='#3c6572';ctx.lineWidth=3;ctx.stroke();circle(12,8,3,'#e6fc69');}else{rr(-12,0,24,7,2,'#1b535b');rr(-4,0,8,6,1,'#efdb7b');}
-rr(-26,-8,9,25,4,isBoss||dog?'#e4efe9':'#2c9b96','#091d2b');rr(17,-8,9,25,4,isBoss||dog?'#e4efe9':'#2c9b96','#091d2b');circle(-21,16,5,'#f2bf9d','#172532');circle(21,16,5,'#f2bf9d','#172532');
+if(isBoss||dog){drawShinyu(dog,walk);}else{
+rr(-15,11+walk,11,16,4,'#172133','#0a1521');rr(4,11-walk,11,16,4,'#172133','#0a1521');rr(-20,-13,40,34,9,'#3bb7ac','#091d2b');
+rr(-12,0,24,7,2,'#1b535b');rr(-4,0,8,6,1,'#efdb7b');
+rr(-26,-8,9,25,4,'#2c9b96','#091d2b');rr(17,-8,9,25,4,'#2c9b96','#091d2b');circle(-21,16,5,'#f2bf9d','#172532');circle(21,16,5,'#f2bf9d','#172532');
 circle(0,-22,21,'#f1bd98','#0b1b28',3);ctx.fillStyle='#172130';ctx.beginPath();ctx.moveTo(-21,-23);ctx.lineTo(-25,-38);ctx.lineTo(-13,-34);ctx.lineTo(-16,-46);ctx.lineTo(-2,-39);ctx.lineTo(6,-49);ctx.lineTo(13,-39);ctx.lineTo(25,-39);ctx.lineTo(20,-18);ctx.lineTo(10,-31);ctx.lineTo(0,-27);ctx.lineTo(-8,-31);ctx.closePath();ctx.fill();
-if(dog){ctx.fillStyle='#cda46e';ctx.beginPath();ctx.ellipse(-23,-29,8,17,-.3,0,TAU);ctx.ellipse(23,-29,8,17,.3,0,TAU);ctx.fill();line(-11,-20,-4,-20,'#26323c',2);line(4,-20,11,-20,'#26323c',2);text('ᴗ',0,-12,15,'#62453b');}else{circle(-8,-22,2.5,'#18232f');circle(8,-22,2.5,'#18232f');if(isBoss){rr(-16,-29,13,12,2,null,'#192636');rr(3,-29,13,12,2,null,'#192636');line(-3,-24,3,-24,'#192636',2);line(-13,-34,-3,-31,'#18232f',3);line(3,-31,13,-34,'#18232f',3);ctx.beginPath();ctx.arc(0,-15,7,0,Math.PI);ctx.fillStyle='#723d48';ctx.fill();text('30',0,11,7,'#f8e3ff');}else{line(-5,-12,5,-12,'#684033',2);ctx.save();ctx.translate(25,4);ctx.rotate(-.35);rr(-3,-9,6,33,2,'#b38858','#172331');rr(-15,-21,30,18,4,'#e6fc69','#152931');line(-8,-18,-8,-7,'#a9ba45',2);ctx.restore();}}
+circle(-8,-22,2.5,'#18232f');circle(8,-22,2.5,'#18232f');line(-5,-12,5,-12,'#684033',2);ctx.save();ctx.translate(25,4);ctx.rotate(-.35);rr(-3,-9,6,33,2,'#b38858','#172331');rr(-15,-21,30,18,4,'#e6fc69','#152931');line(-8,-18,-8,-7,'#a9ba45',2);ctx.restore();}
 if(isBoss&&boss.hit>0){ctx.globalAlpha=.4;circle(0,-9,30,'#fff');}ctx.restore();if(type==='hero'){circle(x,y+3,25,null,player.dash>0?'#e6fc69':'#66e0cd55',1.5);text('강렬',x,y+39,12,'#b5eee4');}else if(dog)text('순둥 신유 ♡',x,y+39,12,'#e6fc69');else{text('30년차 · 김신유',x,y+54,13,'#ffc0c6');}}
 function draw(){ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.clearRect(0,0,W,H);ctx.save();if(shake&&!reduced)ctx.translate((Math.random()-.5)*shake,(Math.random()-.5)*shake);arena();
 if(mode==='training'||mode==='ending'||(mode==='paused'&&previousMode==='training')){for(let i=0;i<stations.length;i++){const s=stations[i],active=i===completed;circle(s.x,s.y,42,s.done?'#53d4c62d':active?'#e6fc6925':'#1b3039',s.done?'#53d4c6':active?'#e6fc69':'#52656d',3);text(s.done?'✓':s.icon,s.x,s.y-3,29,s.done?'#53d4c6':active?'#e6fc69':'#617782');text(`${i+1}. ${s.label}`,s.x,s.y+58,16,s.done?'#53d4c6':active?'#eef5d4':'#7c939d');if(active&&dist(player,s)<65){text('J / 딱밤 꾹',s.x,s.y-63,14,'#e6fc69');if(trainingHold>0){ctx.beginPath();ctx.arc(s.x,s.y,48,-Math.PI/2,-Math.PI/2+TAU*trainingHold);ctx.strokeStyle='#e6fc69';ctx.lineWidth=5;ctx.stroke();}}}}
