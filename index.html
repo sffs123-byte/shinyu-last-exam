@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#101b28">
+<title>국시 30년: 신유의 역습</title><meta name="description" content="30년 묵은 악바리를 깨워라. 직접 움직이고, 피하고, 받아치는 코믹 보스전 액션 게임.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101b28'/%3E%3Cpath d='M27 10h10v17h17v10H37v17H27V37H10V27h17z' fill='%23e9ff63'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css"><script type="module" src="game.js"></script>
+</head>
+<body>
+<main class="cabinet">
+<header class="topbar"><a class="brand" href="./" aria-label="처음 화면"><span class="brand-mark">✚</span><span>LAST EXAM <b>30</b></span></a><div class="top-meta"><span class="edition">국시 실기 보스전</span><button id="sound" class="icon-button" aria-label="소리 켜기" title="소리 켜기">소리 OFF</button><button id="pause" class="icon-button" aria-label="일시정지" disabled>Ⅱ</button></div></header>
+<section class="game-shell" aria-label="국시 30년 액션 게임">
+<div class="hud" id="hud"><div class="hero-status"><div class="hud-label"><strong>강렬</strong><span id="hpText">100 / 100</span></div><div class="meter health"><i id="hpBar"></i></div></div><div class="stage-status"><span id="stageLabel">FINAL BOSS</span><b id="timer">00:00</b></div><div class="boss-status"><div class="hud-label"><strong id="bossName">김신유 · 악바리</strong><span id="bossText">30년 숙성</span></div><div class="meter rage"><i id="bossBar"></i></div></div></div>
+<div class="arena" id="arena"><canvas id="game" width="960" height="600" tabindex="0" aria-label="전투장. 방향키로 이동, J 근접 공격, K 원거리 공격, 스페이스 회피, L 필살기."></canvas><div id="toast" class="toast" role="status" aria-live="polite"></div><div id="phaseBanner" class="phase-banner"></div>
+<section id="overlay" class="overlay"><div id="startScreen" class="screen start-screen"><div class="title-art"></div><div class="title-content"><div class="eyebrow"><span></span>국시 실기장 · 최종 보스 출현</div><h1>국시 <em>30년</em><br><span>신유의 역습</span></h1><p class="intro">30년째 실기를 떨어진 남자.<br>남은 건 악바리, 그리고 끝없는 훈수.<br><strong>오늘, 형의 버릇을 고친다.</strong></p><div class="difficulty" role="group" aria-label="난이도"><button class="selected" data-difficulty="normal" aria-pressed="true">맞불 모드 <small>정면 승부</small></button><button data-difficulty="easy" aria-pressed="false">살살 모드 <small>첫 판 추천</small></button></div><button id="start" class="primary">신유 혼내러 가기 <span>↗</span></button><p class="title-foot">이동 · 공격 · 회피로 끝내는 한 판 승부</p></div><div class="title-stamp">30 YEARS<br><b>STILL TRYING</b></div></div>
+<div id="dialogScreen" class="screen dialog-screen" hidden><div class="result-icon" id="resultIcon">✦</div><span id="dialogTag" class="eyebrow"></span><h2 id="dialogTitle"></h2><p id="dialogBody"></p><div id="stats" class="stats"></div><button id="dialogAction" class="primary"></button><button id="home" class="text-button">처음으로</button></div></section></div>
+<div class="combat-strip"><div class="mission"><span id="missionIndex">MISSION 01</span><strong id="missionText">김신유의 악바리를 0으로 만드세요</strong></div><div class="power"><span>팩트 폭격 <kbd>L</kbd></span><div class="meter charge"><i id="powerBar"></i></div><b id="powerText">0%</b></div></div>
+</section>
+<div class="touch-controls" aria-label="터치 조작"><div class="joystick" id="joystick" aria-label="드래그하여 이동"><div class="joystick-cross">✚</div><div id="stick"></div><span>이동</span></div><div class="action-pad"><button id="touchUlt" data-action="ult" class="action-ult">폭격 <small>필살기</small></button><button id="touchDash" data-action="dash" class="action-dash">회피 <small>무적 대시</small></button><button id="touchShoot" data-action="shoot" class="action-shoot">팩트탄 <small>원거리</small></button><button id="touchMelee" data-action="melee" class="action-melee">딱밤 <small>근접 / 실습</small></button></div></div>
+<footer class="instructions"><div><kbd>W A S D</kbd> / <kbd>방향키</kbd> 이동</div><div><kbd>J</kbd> 딱밤 <kbd>K</kbd> 팩트탄</div><div><kbd>SPACE</kbd> 회피 <kbd>L</kbd> 폭격</div><p>빨간 예고선을 보고 피하세요. 근접 딱밤이 더 강합니다.</p></footer>
+<div class="bottomline"><span>A VERY PERSONAL BOSS FIGHT.</span><span>실존 인물을 과장한 가상 패러디 · 실제 이력과 무관</span></div>
+</main>
+</body></html>
